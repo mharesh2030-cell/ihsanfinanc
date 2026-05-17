@@ -3,814 +3,1334 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>التقرير المالي - جمعية الإحسان</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>عرض سعر التأمين الصحي التعاوني — جمعية الإحسان الطبية</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green: #1a7a4a;
-    --green-light: #2db56e;
-    --green-pale: #e8f7ef;
-    --gold: #c9a84c;
-    --gold-light: #f0d080;
-    --dark: #0d1f16;
-    --mid: #1e3a28;
-    --text: #1a2e22;
-    --muted: #5a7a65;
-    --border: #c8e0d0;
-    --bg: #f4fbf7;
-    --white: #ffffff;
-    --red: #c0392b;
-    --red-pale: #fdecea;
+    --navy: #0A1628;
+    --navy-mid: #122040;
+    --gold: #C4933A;
+    --gold-light: #E8B96A;
+    --gold-pale: #F5E8CC;
+    --teal: #0F6E56;
+    --teal-light: #1D9E75;
+    --teal-pale: #E1F5EE;
+    --slate: #3A4A5C;
+    --slate-light: #6B7E94;
+    --cream: #FAFAF7;
+    --white: #FFFFFF;
+    --border: #E2E6EB;
+    --red-soft: #FFF0EF;
+    --red: #C0392B;
+    --blue-soft: #EEF4FB;
+    --blue: #1A5F9C;
+    --amber-soft: #FFF8EC;
+    --amber: #B5710A;
+    --green-soft: #EAF5EE;
+    --green: #0F7A3E;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Cairo', 'Tajawal', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    direction: rtl;
-    min-height: 100vh;
+    font-family: 'Tajawal', 'IBM Plex Sans Arabic', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  /* HEADER */
+  /* === PAGE WRAPPER === */
+  .document {
+    max-width: 950px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 0 40px rgba(0,0,0,0.08);
+  }
+
+  /* === HEADER === */
   .header {
-    background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 60%, #0f3d20 100%);
-    padding: 40px 48px 32px;
+    background: var(--navy);
+    padding: 32px 48px 0;
     position: relative;
     overflow: hidden;
   }
+
   .header::before {
     content: '';
     position: absolute;
-    top: -60px; left: -60px;
-    width: 300px; height: 300px;
+    top: -60px;
+    left: -60px;
+    width: 260px;
+    height: 260px;
+    border: 40px solid rgba(196,147,58,0.12);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
   }
+
   .header::after {
     content: '';
     position: absolute;
-    bottom: -40px; right: 80px;
-    width: 200px; height: 200px;
+    bottom: -40px;
+    left: 200px;
+    width: 160px;
+    height: 160px;
+    border: 25px solid rgba(196,147,58,0.07);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(45,181,110,0.12) 0%, transparent 70%);
   }
-  .header-content { position: relative; z-index: 1; }
-  .org-badge {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: rgba(201,168,76,0.15);
-    border: 1px solid rgba(201,168,76,0.4);
-    border-radius: 30px;
-    padding: 6px 18px;
-    margin-bottom: 18px;
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 2;
   }
-  .org-badge span { color: var(--gold-light); font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
-  .dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; }
-  .header h1 {
-    color: #fff;
-    font-size: 32px;
-    font-weight: 900;
-    line-height: 1.3;
+
+  .logo-block { text-align: right; }
+  .logo-ar {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  .logo-sub {
+    font-size: 11px;
+    color: var(--gold-light);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+  }
+
+  .quotation-meta { text-align: left; }
+  .quote-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     margin-bottom: 8px;
   }
-  .header-sub {
-    color: rgba(255,255,255,0.6);
-    font-size: 14px;
-    font-weight: 400;
+  .quote-number {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    direction: ltr;
+    text-align: left;
   }
-  .header-period {
-    margin-top: 18px;
-    display: flex; gap: 20px; flex-wrap: wrap;
-  }
-  .period-tag {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 8px;
-    padding: 6px 16px;
-    color: rgba(255,255,255,0.75);
-    font-size: 13px;
+  .quote-number span { color: rgba(255,255,255,0.85); font-weight: 500; }
+
+  .header-divider {
+    border: none;
+    border-top: 1px solid rgba(196,147,58,0.3);
+    margin: 0;
+    position: relative;
+    z-index: 2;
   }
 
-  /* MAIN */
-  .main { padding: 40px 48px; max-width: 1200px; }
+  .header-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    position: relative;
+    z-index: 2;
+  }
 
-  /* SECTION TITLE */
-  .section-title {
-    font-size: 13px;
+  .quote-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .quote-title span { color: var(--gold-light); }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .meta-pill {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.7);
+    padding: 4px 10px;
+    border: 1px solid rgba(196,147,58,0.3);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+  }
+  .meta-pill strong { color: var(--gold-light); font-weight: 600; }
+
+  /* === BODY CONTENT === */
+  .content { padding: 36px 48px; }
+
+  /* === SECTION HEADERS === */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    margin-top: 36px;
+  }
+  .section-header:first-child { margin-top: 0; }
+  .section-num {
+    width: 26px;
+    height: 26px;
+    background: var(--navy);
+    color: var(--gold-light);
+    border-radius: 50%;
+    font-size: 11px;
     font-weight: 700;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 20px;
-    display: flex; align-items: center; gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
-  .section-title::after {
-    content: '';
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  .section-line {
     flex: 1;
     height: 1px;
     background: var(--border);
   }
 
-  /* BALANCE HERO */
-  .balance-hero {
-    background: linear-gradient(135deg, var(--green) 0%, #0d4a28 100%);
-    border-radius: 20px;
-    padding: 36px 40px;
-    margin-bottom: 36px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(26,122,74,0.25);
-  }
-  .balance-hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; left: 50%;
-    width: 350px; height: 350px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-    transform: translateX(-50%);
-  }
-  .balance-item {
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-  .balance-item + .balance-item::before {
-    content: '';
-    position: absolute;
-    right: 0; top: 15%; bottom: 15%;
-    width: 1px;
-    background: rgba(255,255,255,0.2);
-  }
-  .balance-label { color: rgba(255,255,255,0.65); font-size: 13px; margin-bottom: 10px; font-weight: 500; }
-  .balance-amount {
-    color: #fff;
-    font-size: 28px;
-    font-weight: 900;
-    direction: ltr;
-    text-align: center;
-  }
-  .balance-amount.gold { color: var(--gold-light); }
-  .balance-currency { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 4px; font-weight: 400; }
-
-  /* KPI CARDS */
-  .kpi-grid {
+  /* === INTRO BOX === */
+  .intro-box {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 8px;
+    padding: 22px 26px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    margin-bottom: 36px;
+    gap: 16px;
+    margin-bottom: 28px;
   }
-  .kpi-card {
-    background: var(--white);
+  .intro-stat { text-align: center; }
+  .intro-stat-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .intro-stat-lbl {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 400;
+  }
+  .intro-divider {
+    width: 1px;
+    background: rgba(196,147,58,0.25);
+    align-self: stretch;
+    justify-self: center;
+  }
+
+  /* === ACTUARIAL BASIS === */
+  .basis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .basis-card {
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 24px 22px;
+    border-radius: 8px;
+    padding: 16px;
+    background: var(--cream);
     position: relative;
-    overflow: hidden;
-    transition: box-shadow 0.2s;
   }
-  .kpi-card:hover { box-shadow: 0 4px 20px rgba(26,122,74,0.12); }
-  .kpi-card::after {
+  .basis-card::before {
     content: '';
     position: absolute;
-    bottom: 0; right: 0;
-    width: 60px; height: 60px;
-    background: var(--green-pale);
-    border-radius: 50% 0 0 0;
-    opacity: 0.7;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 40px;
+    background: var(--gold);
+    border-radius: 0 8px 0 0;
   }
-  .kpi-icon {
-    width: 42px; height: 42px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    margin-bottom: 14px;
-  }
-  .kpi-icon.green { background: var(--green-pale); }
-  .kpi-icon.gold { background: #fdf6e3; }
-  .kpi-icon.red { background: var(--red-pale); }
-  .kpi-icon.blue { background: #e8f0fe; }
-  .kpi-label { color: var(--muted); font-size: 12px; font-weight: 600; margin-bottom: 6px; }
-  .kpi-value { font-size: 22px; font-weight: 900; color: var(--text); direction: ltr; }
-  .kpi-value.green { color: var(--green); }
-  .kpi-value.red { color: var(--red); }
-  .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
-
-  /* TWO COLUMN */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px; }
-  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 36px; }
-
-  /* CARD */
-  .card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-  }
-  .card-title {
-    font-size: 15px;
+  .basis-label {
+    font-size: 10px;
     font-weight: 700;
-    color: var(--text);
-    margin-bottom: 20px;
-    display: flex; align-items: center; gap: 8px;
+    color: var(--slate-light);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
   }
-  .card-title .icon { font-size: 18px; }
-
-  /* BAR CHART */
-  .bar-row {
-    display: flex; align-items: center;
-    gap: 12px; margin-bottom: 14px;
-  }
-  .bar-label { font-size: 12px; color: var(--muted); width: 130px; flex-shrink: 0; text-align: right; }
-  .bar-track { flex: 1; background: var(--green-pale); border-radius: 6px; height: 10px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 6px; transition: width 1s ease; }
-  .bar-fill.green { background: linear-gradient(90deg, var(--green-light), var(--green)); }
-  .bar-fill.gold { background: linear-gradient(90deg, var(--gold-light), var(--gold)); }
-  .bar-fill.red { background: linear-gradient(90deg, #e74c3c, var(--red)); }
-  .bar-amount { font-size: 12px; font-weight: 700; color: var(--text); width: 90px; text-align: left; direction: ltr; }
-
-  /* TABLE */
-  .data-table { width: 100%; border-collapse: collapse; }
-  .data-table th {
-    background: var(--green-pale);
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 10px 14px;
-    text-align: right;
-    border-bottom: 2px solid var(--border);
-  }
-  .data-table td {
-    padding: 10px 14px;
+  .basis-value {
     font-size: 13px;
-    border-bottom: 1px solid #f0f5f2;
-    color: var(--text);
-  }
-  .data-table tr:last-child td { border-bottom: none; }
-  .data-table tr:hover td { background: #f9fdfb; }
-  .amount-cell { direction: ltr; text-align: left; font-weight: 600; font-size: 13px; }
-  .badge {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 11px;
     font-weight: 600;
+    color: var(--navy);
   }
-  .badge.green { background: var(--green-pale); color: var(--green); }
-  .badge.red { background: var(--red-pale); color: var(--red); }
-  .badge.gold { background: #fdf6e3; color: #8a6a0a; }
+  .basis-note {
+    font-size: 10.5px;
+    color: var(--slate-light);
+    margin-top: 3px;
+    font-weight: 400;
+  }
 
-  /* DONUT */
-  .donut-wrap {
-    display: flex; align-items: center; gap: 24px;
-  }
-  .donut-svg { flex-shrink: 0; }
-  .donut-legend { flex: 1; }
-  .legend-item {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 12px;
-  }
-  .legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
-  .legend-label { font-size: 12px; color: var(--muted); flex: 1; }
-  .legend-pct { font-size: 12px; font-weight: 700; color: var(--text); }
+  /* === TIER CARDS === */
+  .tier-grid { display: flex; flex-direction: column; gap: 0; margin-bottom: 8px; }
 
-  /* BANKS TABLE */
-  .bank-row {
-    display: flex; align-items: center; gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid #f0f5f2;
+  .tier-card {
+    border: 1px solid var(--border);
+    border-bottom: none;
+    overflow: hidden;
+    position: relative;
   }
-  .bank-row:last-child { border-bottom: none; }
-  .bank-icon {
-    width: 34px; height: 34px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 900; color: white; flex-shrink: 0;
-  }
-  .bank-name { flex: 1; font-size: 13px; font-weight: 600; color: var(--text); }
-  .bank-amount { font-size: 13px; font-weight: 700; direction: ltr; color: var(--green); }
+  .tier-card:first-child { border-radius: 8px 8px 0 0; }
+  .tier-card:last-child { border-radius: 0 0 8px 8px; border-bottom: 1px solid var(--border); }
 
-  /* ALERT BOX */
-  .alert-box {
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 16px;
-    display: flex; gap: 14px; align-items: flex-start;
+  .tier-header {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
   }
-  .alert-box.warning { background: #fffbeb; border: 1px solid #f6d860; }
-  .alert-box.positive { background: var(--green-pale); border: 1px solid #a8d8bc; }
-  .alert-box.negative { background: var(--red-pale); border: 1px solid #f5b8b1; }
-  .alert-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-  .alert-text { font-size: 13px; line-height: 1.7; color: var(--text); }
-  .alert-text strong { font-weight: 700; display: block; margin-bottom: 3px; }
 
-  /* FOOTER */
-  .footer {
+  .tier-tag {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .tag-a { background: var(--red-soft); color: var(--red); }
+  .tag-b { background: var(--amber-soft); color: var(--amber); }
+  .tag-c { background: var(--green-soft); color: var(--green); }
+
+  .tier-title-block { flex: 1; }
+  .tier-name { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+  .tier-desc { font-size: 11px; color: var(--slate-light); margin-top: 2px; }
+
+  .tier-quick-stats {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .qs-item { text-align: center; }
+  .qs-label { font-size: 9.5px; color: var(--slate-light); font-weight: 500; }
+  .qs-val { font-size: 15px; font-weight: 800; color: var(--navy); line-height: 1.1; }
+  .qs-unit { font-size: 9px; color: var(--slate-light); font-weight: 400; }
+
+  .tier-premium-box {
     text-align: center;
-    padding: 28px;
-    color: var(--muted);
-    font-size: 12px;
+    padding: 10px 20px;
+    border-right: 1px solid var(--border);
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+  .premium-label { font-size: 9.5px; color: var(--slate-light); margin-bottom: 2px; }
+  .premium-annual {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  .premium-annual sup { font-size: 10px; font-weight: 600; }
+  .premium-monthly { font-size: 10px; color: var(--slate-light); margin-top: 2px; }
+
+  .tier-body {
+    padding: 0 20px 18px;
     border-top: 1px solid var(--border);
-    margin-top: 20px;
+    background: #FDFDFC;
   }
 
-  /* SUMMARY STRIP */
-  .summary-strip {
-    background: linear-gradient(90deg, #fdf6e3, #fffdf5);
-    border: 1px solid var(--gold-light);
-    border-radius: 14px;
-    padding: 20px 28px;
-    margin-bottom: 36px;
-    display: flex; align-items: center; gap: 16px;
+  .tier-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    padding-top: 16px;
   }
-  .strip-icon { font-size: 28px; }
-  .strip-text { font-size: 13px; line-height: 1.8; color: var(--text); }
-  .strip-text strong { color: var(--green); font-weight: 700; }
 
-  @media (max-width: 900px) {
-    .main, .header { padding: 24px 20px; }
-    .kpi-grid { grid-template-columns: 1fr 1fr; }
-    .two-col, .three-col { grid-template-columns: 1fr; }
-    .balance-hero { grid-template-columns: 1fr; gap: 24px; }
-    .balance-item + .balance-item::before { display: none; }
+  .detail-group { }
+  .detail-group-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--slate-light);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 11.5px;
+    border-bottom: 1px dotted rgba(0,0,0,0.05);
+  }
+  .detail-row:last-child { border-bottom: none; }
+  .dr-key { color: var(--slate); }
+  .dr-val { font-weight: 600; color: var(--navy); text-align: left; direction: ltr; }
+  .dr-val.highlight { color: var(--teal); }
+  .dr-val.warn { color: var(--amber); }
+
+  /* === COVERAGE TABLE === */
+  .coverage-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    margin-bottom: 24px;
+  }
+  .coverage-table thead tr {
+    background: var(--navy);
+  }
+  .coverage-table thead th {
+    padding: 10px 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    font-size: 10.5px;
+    text-align: right;
+    letter-spacing: 0.3px;
+  }
+  .coverage-table thead th:first-child { border-radius: 0; }
+  .coverage-table thead th.gold { color: var(--gold-light); }
+
+  .coverage-table tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .coverage-table tbody tr:hover { background: var(--cream); }
+  .coverage-table tbody tr.cat-row {
+    background: #F5F5F2;
+  }
+  .coverage-table tbody tr.cat-row td {
+    font-weight: 700;
+    font-size: 10.5px;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 7px 14px;
+  }
+  .coverage-table tbody td {
+    padding: 8px 14px;
+    color: var(--slate);
+  }
+  .coverage-table tbody td.benefit-name { color: var(--navy); font-weight: 500; }
+  .coverage-table tbody td.center { text-align: center; }
+
+  .check { color: var(--teal); font-weight: 700; font-size: 13px; }
+  .cross { color: #CCC; font-size: 13px; }
+  .partial { color: var(--amber); font-weight: 600; font-size: 11px; }
+
+  /* === PRICING SUMMARY TABLE === */
+  .pricing-summary {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .pricing-summary table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .pricing-summary thead {
+    background: var(--navy);
+  }
+  .pricing-summary thead th {
+    padding: 11px 16px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    font-size: 10.5px;
+    text-align: right;
+  }
+  .pricing-summary thead th.c { text-align: center; }
+  .pricing-summary tbody td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--slate);
+    text-align: right;
+  }
+  .pricing-summary tbody td.c { text-align: center; }
+  .pricing-summary tbody td.bold { font-weight: 700; color: var(--navy); }
+  .pricing-summary tbody td.gold-text { color: var(--gold); font-weight: 700; }
+  .pricing-summary tbody td.teal-text { color: var(--teal); font-weight: 700; }
+  .pricing-summary tfoot {
+    background: #F0F5F0;
+    border-top: 2px solid var(--teal-light);
+  }
+  .pricing-summary tfoot td {
+    padding: 13px 16px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--navy);
+    text-align: right;
+  }
+  .pricing-summary tfoot td.c { text-align: center; }
+  .pricing-summary tfoot td.teal { color: var(--teal); font-size: 15px; }
+
+  /* === CONDITIONS === */
+  .conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .condition-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: var(--cream);
+  }
+  .condition-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .condition-title::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .condition-list { list-style: none; }
+  .condition-list li {
+    font-size: 11px;
+    color: var(--slate);
+    padding: 3px 0;
+    padding-right: 12px;
+    position: relative;
+  }
+  .condition-list li::before {
+    content: '–';
+    position: absolute;
+    right: 0;
+    color: var(--slate-light);
+  }
+
+  /* === ACTUARIAL ASSUMPTIONS === */
+  .assumptions-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .assumptions-table thead {
+    background: #F5F5F2;
+  }
+  .assumptions-table thead th {
+    padding: 9px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    text-align: right;
+  }
+  .assumptions-table tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--slate);
+  }
+  .assumptions-table tbody tr:last-child td { border-bottom: none; }
+  .assumptions-table tbody td:first-child { color: var(--navy); font-weight: 500; }
+  .atd-val { font-weight: 600; color: var(--navy); text-align: center; }
+  .atd-val.a { color: var(--red); }
+  .atd-val.b { color: var(--amber); }
+  .atd-val.c { color: var(--green); }
+
+  /* === VALIDITY BOX === */
+  .validity-box {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 20px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .validity-text { color: rgba(255,255,255,0.7); font-size: 11px; }
+  .validity-text strong { color: var(--gold-light); font-size: 13px; display: block; margin-bottom: 3px; }
+  .validity-date {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    direction: ltr;
+  }
+
+  /* === FOOTER === */
+  .doc-footer {
+    background: #F5F5F2;
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-note {
+    font-size: 10px;
+    color: var(--slate-light);
+    max-width: 480px;
+    line-height: 1.5;
+  }
+  .footer-stamp {
+    text-align: center;
+  }
+  .stamp-circle {
+    width: 64px;
+    height: 64px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 4px;
+  }
+  .stamp-text { font-size: 8px; font-weight: 700; color: var(--gold); letter-spacing: 0.3px; line-height: 1.3; text-align: center; }
+  .footer-company { font-size: 9px; color: var(--slate-light); text-align: center; }
+
+  /* === DISCLAIMER BAR === */
+  .disclaimer {
+    background: #FFF8EC;
+    border-top: 2px solid var(--amber);
+    padding: 12px 48px;
+    font-size: 10px;
+    color: var(--amber);
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .document { box-shadow: none; }
+    @page { margin: 0; }
   }
 </style>
 </head>
 <body>
+<div class="document">
 
-<!-- HEADER -->
-<div class="header">
-  <div class="header-content">
-    <div class="org-badge">
-      <div class="dot"></div>
-      <span>جمعية الإحسان الخيرية</span>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="quotation-meta">
+        <div class="quote-badge">Quotation · عرض سعر</div>
+        <div class="quote-number">رقم العرض: <span>IHSAN-GHI-2026-0517</span></div>
+        <div class="quote-number">تاريخ الإصدار: <span>17 مايو 2026</span></div>
+        <div class="quote-number">صادر من: <span>وحدة الاكتواريين — أركان الاستدامة</span></div>
+      </div>
+      <div class="logo-block">
+        <div class="logo-ar">جمعية الإحسان الطبية</div>
+        <div class="logo-sub">التأمين الصحي التعاوني — عرض سعر رسمي</div>
+      </div>
     </div>
-    <h1>التقرير المالي التحليلي<br>ميزان المراجعة</h1>
-    <p class="header-sub">تقرير النظام المالي — تحليل شامل للأداء المالي</p>
-    <div class="header-period">
-      <div class="period-tag">📅 الفترة: أكتوبر — ديسمبر 2024</div>
-      <div class="period-tag">📋 تاريخ التقرير: 12 أغسطس 2025</div>
-      <div class="period-tag">🔢 16 صفحة — بيانات مفصّلة</div>
-    </div>
-  </div>
-</div>
 
-<div class="main">
+    <hr class="header-divider">
 
-  <!-- BALANCE HERO -->
-  <div class="section-title">الرصيد الإجمالي في نهاية الفترة</div>
-  <div class="balance-hero">
-    <div class="balance-item">
-      <div class="balance-label">إجمالي الأصول</div>
-      <div class="balance-amount gold">38,339,808</div>
-      <div class="balance-currency">ريال سعودي</div>
-    </div>
-    <div class="balance-item">
-      <div class="balance-label">صافي الأصول (حقوق الجمعية)</div>
-      <div class="balance-amount">22,354,325</div>
-      <div class="balance-currency">ريال سعودي</div>
-    </div>
-    <div class="balance-item">
-      <div class="balance-label">النقدية والبنوك الفعلية</div>
-      <div class="balance-amount gold">5,116,397</div>
-      <div class="balance-currency">ريال سعودي</div>
+    <div class="header-bottom">
+      <div class="meta-pills">
+        <div class="meta-pill">إجمالي المستفيدين: <strong>1,500</strong></div>
+        <div class="meta-pill">فئات الخطر: <strong>3 شرائح</strong></div>
+        <div class="meta-pill">مدة التغطية: <strong>12 شهراً</strong></div>
+        <div class="meta-pill">جهة التنظيم: <strong>CCHI</strong></div>
+      </div>
+      <div class="quote-title">عرض سعر<br><span>وثيقة التأمين الجماعي</span></div>
     </div>
   </div>
 
-  <!-- SUMMARY STRIP -->
-  <div class="summary-strip">
-    <div class="strip-icon">📊</div>
-    <div class="strip-text">
-      تُظهر الجمعية <strong>وضعاً مالياً مستقراً</strong> مع صافي أصول يبلغ 22.35 مليون ريال، ونقدية جاهزة تتجاوز 5.1 مليون ريال. وقد حققت الفترة تدفقات تبرعات نشطة بلغت <strong>9.17 مليون ريال</strong>، مقابل مصروفات تشغيلية وبرامجية بلغت <strong>9.19 مليون ريال</strong>، مما يعكس توازناً دقيقاً في الإنفاق.
-    </div>
-  </div>
+  <!-- CONTENT -->
+  <div class="content">
 
-  <!-- KPI CARDS -->
-  <div class="section-title">مؤشرات الأداء المالي الرئيسية</div>
-  <div class="kpi-grid">
-    <div class="kpi-card">
-      <div class="kpi-icon green">💰</div>
-      <div class="kpi-label">الأصول المتداولة</div>
-      <div class="kpi-value green">5,912,403</div>
-      <div class="kpi-sub">ريال — نهاية الفترة</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-icon gold">📈</div>
-      <div class="kpi-label">إجمالي التبرعات والإيرادات</div>
-      <div class="kpi-value">9,177,878</div>
-      <div class="kpi-sub">ريال — خلال الفترة</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-icon red">📉</div>
-      <div class="kpi-label">إجمالي المصروفات</div>
-      <div class="kpi-value red">9,185,909</div>
-      <div class="kpi-sub">ريال — خلال الفترة</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-icon blue">🏛️</div>
-      <div class="kpi-label">الأصول الثابتة (صافي)</div>
-      <div class="kpi-value">17,779,178</div>
-      <div class="kpi-sub">ريال — بعد الإهلاك</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-icon green">🏦</div>
-      <div class="kpi-label">الالتزامات المتداولة</div>
-      <div class="kpi-value red">382,360</div>
-      <div class="kpi-sub">ريال — قصيرة الأجل</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-icon gold">⚖️</div>
-      <div class="kpi-label">نسبة التداول</div>
-      <div class="kpi-value green">15.5x</div>
-      <div class="kpi-sub">أصول متداولة / التزامات متداولة</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-icon blue">🔄</div>
-      <div class="kpi-label">مخصص نهاية الخدمة</div>
-      <div class="kpi-value">1,083,147</div>
-      <div class="kpi-sub">ريال — التزامات غير متداولة</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-icon green">🕌</div>
-      <div class="kpi-label">صافي أصول الأوقاف</div>
-      <div class="kpi-value green">1,183,661</div>
-      <div class="kpi-sub">ريال — وقف الإحسان 2</div>
-    </div>
-  </div>
-
-  <!-- BANKS + ASSET DISTRIBUTION -->
-  <div class="two-col">
-
-    <!-- BANKS -->
-    <div class="card">
-      <div class="card-title"><span class="icon">🏦</span> أرصدة البنوك — نهاية الفترة</div>
-
-      <div class="bank-row">
-        <div class="bank-icon" style="background:#005a28;">رج</div>
-        <div class="bank-name">مصرف الراجحي</div>
-        <div class="bank-amount">2,373,470 ر.س</div>
+    <!-- SUMMARY STATS -->
+    <div class="intro-box">
+      <div class="intro-stat">
+        <div class="intro-stat-val">7.88م</div>
+        <div class="intro-stat-lbl">الإنفاق الصحي الحالي (ريال)</div>
       </div>
-      <div class="bank-row">
-        <div class="bank-icon" style="background:#007a3d;">أه</div>
-        <div class="bank-name">البنك الأهلي السعودي</div>
-        <div class="bank-amount">218,587 ر.س</div>
+      <div class="intro-divider"></div>
+      <div class="intro-stat">
+        <div class="intro-stat-val">4.11م</div>
+        <div class="intro-stat-lbl">إجمالي القسط المقترح (ريال)</div>
       </div>
-      <div class="bank-row">
-        <div class="bank-icon" style="background:#c0392b;">بل</div>
-        <div class="bank-name">بنك البلاد</div>
-        <div class="bank-amount">607,802 ر.س</div>
+      <div class="intro-divider"></div>
+      <div class="intro-stat">
+        <div class="intro-stat-val">47.8%</div>
+        <div class="intro-stat-lbl">نسبة الوفر المتوقعة</div>
       </div>
-      <div class="bank-row">
-        <div class="bank-icon" style="background:#2980b9;">سع</div>
-        <div class="bank-name">البنك السعودي للاستثمار</div>
-        <div class="bank-amount">1,769,777 ر.س</div>
-      </div>
-      <div class="bank-row">
-        <div class="bank-icon" style="background:#8e44ad;">نم</div>
-        <div class="bank-name">بنك الإنماء</div>
-        <div class="bank-amount">113,426 ر.س</div>
-      </div>
-      <div class="bank-row">
-        <div class="bank-icon" style="background:#16a085;">جز</div>
-        <div class="bank-name">بنك الجزيرة</div>
-        <div class="bank-amount">33,336 ر.س</div>
-      </div>
-      <div style="margin-top:16px; padding-top:14px; border-top:2px solid var(--green-pale); display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:13px;font-weight:700;color:var(--text);">إجمالي أرصدة البنوك</span>
-        <span style="font-size:16px;font-weight:900;color:var(--green);direction:ltr;">5,116,397 ر.س</span>
+      <div class="intro-divider"></div>
+      <div class="intro-stat">
+        <div class="intro-stat-val">500ألف</div>
+        <div class="intro-stat-lbl">سقف الحماية الكارثية / مستفيد</div>
       </div>
     </div>
 
-    <!-- ASSET DISTRIBUTION -->
-    <div class="card">
-      <div class="card-title"><span class="icon">📊</span> توزيع الأصول</div>
-      <div style="margin-bottom:8px;">
-        <div class="bar-row">
-          <div class="bar-label">الأصول الثابتة</div>
-          <div class="bar-track"><div class="bar-fill green" style="width:84%"></div></div>
-          <div class="bar-amount">32,299,155</div>
+    <!-- SECTION 1: ACTUARIAL BASIS -->
+    <div class="section-header">
+      <div class="section-num">١</div>
+      <div class="section-title">الأساس الاكتواري لعرض السعر</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="basis-grid">
+      <div class="basis-card">
+        <div class="basis-label">مصدر البيانات</div>
+        <div class="basis-value">التقرير المالي 2024</div>
+        <div class="basis-note">+ متوسطات سوق التأمين السعودي</div>
+      </div>
+      <div class="basis-card">
+        <div class="basis-label">منهجية التسعير</div>
+        <div class="basis-value">Loss Ratio Method</div>
+        <div class="basis-note">مع تحميل خطر + هامش ربح</div>
+      </div>
+      <div class="basis-card">
+        <div class="basis-label">نسبة الخسائر المستهدفة</div>
+        <div class="basis-value">65–80%</div>
+        <div class="basis-note">وفق معايير CCHI لـ 2026</div>
+      </div>
+      <div class="basis-card">
+        <div class="basis-label">نمو التكاليف الطبية</div>
+        <div class="basis-value">7–9% سنوياً</div>
+        <div class="basis-note">متوسط السوق السعودي 2022–2025</div>
+      </div>
+      <div class="basis-card">
+        <div class="basis-label">معدل التضخم الطبي المعتمد</div>
+        <div class="basis-value">8% (تحفظي)</div>
+        <div class="basis-note">مضاف لحماية الوثيقة عند التجديد</div>
+      </div>
+      <div class="basis-card">
+        <div class="basis-label">هامش الاحتياطي</div>
+        <div class="basis-value">10% من القسط</div>
+        <div class="basis-note">صندوق طوارئ لتجديد الأسعار</div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: TIER PRICING -->
+    <div class="section-header">
+      <div class="section-num">٢</div>
+      <div class="section-title">تسعير الشرائح الثلاث — التحليل الاكتواري التفصيلي</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="tier-grid">
+
+      <!-- TIER A -->
+      <div class="tier-card">
+        <div class="tier-header">
+          <div class="tier-premium-box">
+            <div class="premium-label">القسط السنوي / مستفيد</div>
+            <div class="premium-annual"><sup>ر</sup> 3,720</div>
+            <div class="premium-monthly">310 ر / شهرياً</div>
+          </div>
+          <div class="tier-title-block">
+            <div class="tier-name">الشريحة أ — كبار السن (50 سنة فأكثر)</div>
+            <div class="tier-desc">375 مستفيداً · 25% من الإجمالي · خطر مرتفع جداً</div>
+          </div>
+          <div class="tier-quick-stats">
+            <div class="qs-item">
+              <div class="qs-label">نسبة الاستخدام</div>
+              <div class="qs-val">88%</div>
+            </div>
+            <div class="qs-item">
+              <div class="qs-label">Loss Ratio</div>
+              <div class="qs-val">78%</div>
+            </div>
+            <div class="qs-item">
+              <div class="qs-label">Risk Loading</div>
+              <div class="qs-val">28%</div>
+            </div>
+          </div>
+          <span class="tier-tag tag-a">خطر مرتفع</span>
         </div>
-        <div class="bar-row">
-          <div class="bar-label">نقدية وبنوك</div>
-          <div class="bar-track"><div class="bar-fill gold" style="width:13%"></div></div>
-          <div class="bar-amount">5,116,397</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">ذمم مدينة</div>
-          <div class="bar-track"><div class="bar-fill green" style="width:1.5%"></div></div>
-          <div class="bar-amount">515,381</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">مصروفات مدفوعة مقدماً</div>
-          <div class="bar-track"><div class="bar-fill gold" style="width:0.7%"></div></div>
-          <div class="bar-amount">276,125</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">ضريبة القيمة المضافة</div>
-          <div class="bar-track"><div class="bar-fill red" style="width:0.01%"></div></div>
-          <div class="bar-amount">0.01</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">المخزون</div>
-          <div class="bar-track"><div class="bar-fill green" style="width:0.01%"></div></div>
-          <div class="bar-amount">4,500</div>
+
+        <div class="tier-body">
+          <div class="tier-detail-grid">
+            <div class="detail-group">
+              <div class="detail-group-title">مكونات القسط الاكتواري</div>
+              <div class="detail-row"><span class="dr-key">تكلفة المطالبات الصافية</span><span class="dr-val">2,650 ر</span></div>
+              <div class="detail-row"><span class="dr-key">Risk Loading (28%)</span><span class="dr-val warn">742 ر</span></div>
+              <div class="detail-row"><span class="dr-key">مصاريف الإدارة (8%)</span><span class="dr-val">266 ر</span></div>
+              <div class="detail-row"><span class="dr-key">هامش ربح شركة التأمين (3%)</span><span class="dr-val">100 ر</span></div>
+              <div class="detail-row"><span class="dr-key">الاحتياطي الكارثي (تقديري)</span><span class="dr-val">62 ر</span></div>
+              <div class="detail-row" style="border-top:1px solid var(--border); margin-top:4px; padding-top:6px;"><span class="dr-key" style="font-weight:700;color:var(--navy)">القسط الإجمالي المقترح</span><span class="dr-val highlight" style="font-size:13px;">3,720 ر</span></div>
+            </div>
+            <div class="detail-group">
+              <div class="detail-group-title">معايير الخطر الاكتوارية</div>
+              <div class="detail-row"><span class="dr-key">متوسط تكرار المطالبات / سنة</span><span class="dr-val warn">12–15</span></div>
+              <div class="detail-row"><span class="dr-key">متوسط قيمة المطالبة</span><span class="dr-val">480–620 ر</span></div>
+              <div class="detail-row"><span class="dr-key">احتمالية الحالات الكارثية</span><span class="dr-val warn">6.8%</span></div>
+              <div class="detail-row"><span class="dr-key">الانحراف المعياري للتكلفة</span><span class="dr-val">± 18%</span></div>
+              <div class="detail-row"><span class="dr-key">Credibility Factor</span><span class="dr-val">0.88</span></div>
+            </div>
+            <div class="detail-group">
+              <div class="detail-group-title">نطاقات التغطية الخاصة</div>
+              <div class="detail-row"><span class="dr-key">أدوية الأمراض المزمنة</span><span class="dr-val highlight">مشمولة كاملاً</span></div>
+              <div class="detail-row"><span class="dr-key">العلاج الفيزيائي</span><span class="dr-val highlight">24 جلسة/سنة</span></div>
+              <div class="detail-row"><span class="dr-key">المتابعة الدورية للمزمن</span><span class="dr-val highlight">غير محدودة</span></div>
+              <div class="detail-row"><span class="dr-key">سقف الحالات الكارثية</span><span class="dr-val highlight">500,000 ر</span></div>
+              <div class="detail-row"><span class="dr-key">الأشعة والمختبرات</span><span class="dr-val highlight">100%</span></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div style="margin-top:16px;padding:12px 16px;background:var(--green-pale);border-radius:10px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:12px;color:var(--muted);font-weight:600;">ملاحظة: مجمعات الإهلاك المتراكمة</span>
-          <span style="font-size:14px;font-weight:700;color:var(--red);direction:ltr;">(14,519,977)</span>
+
+      <!-- TIER B -->
+      <div class="tier-card">
+        <div class="tier-header">
+          <div class="tier-premium-box">
+            <div class="premium-label">القسط السنوي / مستفيد</div>
+            <div class="premium-annual"><sup>ر</sup> 2,940</div>
+            <div class="premium-monthly">245 ر / شهرياً</div>
+          </div>
+          <div class="tier-title-block">
+            <div class="tier-name">الشريحة ب — مرضى الأمراض المزمنة (30–49 سنة)</div>
+            <div class="tier-desc">675 مستفيداً · 45% من الإجمالي · الشريحة الأعلى تأثيراً مالياً</div>
+          </div>
+          <div class="tier-quick-stats">
+            <div class="qs-item">
+              <div class="qs-label">نسبة الاستخدام</div>
+              <div class="qs-val">72%</div>
+            </div>
+            <div class="qs-item">
+              <div class="qs-label">Loss Ratio</div>
+              <div class="qs-val">73%</div>
+            </div>
+            <div class="qs-item">
+              <div class="qs-label">Risk Loading</div>
+              <div class="qs-val">18%</div>
+            </div>
+          </div>
+          <span class="tier-tag tag-b">خطر متوسط</span>
         </div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px;">تُخصم من الأصول الثابتة لتُعطي الصافي: 17,779,178 ر.س</div>
+
+        <div class="tier-body">
+          <div class="tier-detail-grid">
+            <div class="detail-group">
+              <div class="detail-group-title">مكونات القسط الاكتواري</div>
+              <div class="detail-row"><span class="dr-key">تكلفة المطالبات الصافية</span><span class="dr-val">2,180 ر</span></div>
+              <div class="detail-row"><span class="dr-key">Risk Loading (18%)</span><span class="dr-val warn">392 ر</span></div>
+              <div class="detail-row"><span class="dr-key">مصاريف الإدارة (8%)</span><span class="dr-val">214 ر</span></div>
+              <div class="detail-row"><span class="dr-key">هامش ربح شركة التأمين (3%)</span><span class="dr-val">88 ر</span></div>
+              <div class="detail-row"><span class="dr-key">إدارة الأمراض المزمنة DM (3%)</span><span class="dr-val">66 ر</span></div>
+              <div class="detail-row" style="border-top:1px solid var(--border); margin-top:4px; padding-top:6px;"><span class="dr-key" style="font-weight:700;color:var(--navy)">القسط الإجمالي المقترح</span><span class="dr-val highlight" style="font-size:13px;">2,940 ر</span></div>
+            </div>
+            <div class="detail-group">
+              <div class="detail-group-title">معايير الخطر الاكتوارية</div>
+              <div class="detail-row"><span class="dr-key">متوسط تكرار المطالبات / سنة</span><span class="dr-val warn">7–10</span></div>
+              <div class="detail-row"><span class="dr-key">متوسط قيمة المطالبة</span><span class="dr-val">380–520 ر</span></div>
+              <div class="detail-row"><span class="dr-key">احتمالية الحالات الكارثية</span><span class="dr-val">3.2%</span></div>
+              <div class="detail-row"><span class="dr-key">الانحراف المعياري للتكلفة</span><span class="dr-val">± 14%</span></div>
+              <div class="detail-row"><span class="dr-key">Credibility Factor</span><span class="dr-val">0.92</span></div>
+            </div>
+            <div class="detail-group">
+              <div class="detail-group-title">نطاقات التغطية الخاصة</div>
+              <div class="detail-row"><span class="dr-key">برنامج إدارة الأمراض المزمنة</span><span class="dr-val highlight">مشمول إلزامياً</span></div>
+              <div class="detail-row"><span class="dr-key">أدوية السكري والضغط</span><span class="dr-val highlight">100% بلا حد</span></div>
+              <div class="detail-row"><span class="dr-key">الفحوصات الدورية المزمن</span><span class="dr-val highlight">غير محدودة</span></div>
+              <div class="detail-row"><span class="dr-key">سقف الحالات الكارثية</span><span class="dr-val highlight">500,000 ر</span></div>
+              <div class="detail-row"><span class="dr-key">استشارات التخصص</span><span class="dr-val highlight">مشمولة</span></div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- TIER C -->
+      <div class="tier-card">
+        <div class="tier-header">
+          <div class="tier-premium-box">
+            <div class="premium-label">القسط السنوي / مستفيد</div>
+            <div class="premium-annual"><sup>ر</sup> 2,100</div>
+            <div class="premium-monthly">175 ر / شهرياً</div>
+          </div>
+          <div class="tier-title-block">
+            <div class="tier-name">الشريحة ج — الأصحاء (أقل من 50 سنة، بدون أمراض مزمنة)</div>
+            <div class="tier-desc">450 مستفيداً · 30% من الإجمالي · أفضل نسبة وفر (53%+)</div>
+          </div>
+          <div class="tier-quick-stats">
+            <div class="qs-item">
+              <div class="qs-label">نسبة الاستخدام</div>
+              <div class="qs-val">38%</div>
+            </div>
+            <div class="qs-item">
+              <div class="qs-label">Loss Ratio</div>
+              <div class="qs-val">62%</div>
+            </div>
+            <div class="qs-item">
+              <div class="qs-label">Risk Loading</div>
+              <div class="qs-val">8%</div>
+            </div>
+          </div>
+          <span class="tier-tag tag-c">خطر منخفض</span>
+        </div>
+
+        <div class="tier-body">
+          <div class="tier-detail-grid">
+            <div class="detail-group">
+              <div class="detail-group-title">مكونات القسط الاكتواري</div>
+              <div class="detail-row"><span class="dr-key">تكلفة المطالبات الصافية</span><span class="dr-val">1,580 ر</span></div>
+              <div class="detail-row"><span class="dr-key">Risk Loading (8%)</span><span class="dr-val">126 ر</span></div>
+              <div class="detail-row"><span class="dr-key">مصاريف الإدارة (8%)</span><span class="dr-val">136 ر</span></div>
+              <div class="detail-row"><span class="dr-key">هامش ربح شركة التأمين (3%)</span><span class="dr-val">51 ر</span></div>
+              <div class="detail-row"><span class="dr-key">برامج الوقاية والفحص المبكر</span><span class="dr-val">57 ر</span></div>
+              <div class="detail-row" style="border-top:1px solid var(--border); margin-top:4px; padding-top:6px;"><span class="dr-key" style="font-weight:700;color:var(--navy)">القسط الإجمالي المقترح</span><span class="dr-val highlight" style="font-size:13px;">2,100 ر</span></div>
+            </div>
+            <div class="detail-group">
+              <div class="detail-group-title">معايير الخطر الاكتوارية</div>
+              <div class="detail-row"><span class="dr-key">متوسط تكرار المطالبات / سنة</span><span class="dr-val highlight">2–4</span></div>
+              <div class="detail-row"><span class="dr-key">متوسط قيمة المطالبة</span><span class="dr-val">280–380 ر</span></div>
+              <div class="detail-row"><span class="dr-key">احتمالية الحالات الكارثية</span><span class="dr-val highlight">0.9%</span></div>
+              <div class="detail-row"><span class="dr-key">الانحراف المعياري للتكلفة</span><span class="dr-val">± 9%</span></div>
+              <div class="detail-row"><span class="dr-key">Credibility Factor</span><span class="dr-val">0.75</span></div>
+            </div>
+            <div class="detail-group">
+              <div class="detail-group-title">نطاقات التغطية الخاصة</div>
+              <div class="detail-row"><span class="dr-key">فحوصات الوقاية السنوية</span><span class="dr-val highlight">مشمولة كاملاً</span></div>
+              <div class="detail-row"><span class="dr-key">الكشف المبكر للأمراض</span><span class="dr-val highlight">مشمول</span></div>
+              <div class="detail-row"><span class="dr-key">العلاج العام والطوارئ</span><span class="dr-val highlight">100%</span></div>
+              <div class="detail-row"><span class="dr-key">سقف الحالات الكارثية</span><span class="dr-val highlight">500,000 ر</span></div>
+              <div class="detail-row"><span class="dr-key">الخدمات الوقائية الخاصة</span><span class="dr-val highlight">مشمولة</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
 
-  <!-- EXPENSES BREAKDOWN + NET ASSETS -->
-  <div class="two-col">
-
-    <!-- EXPENSES -->
-    <div class="card">
-      <div class="card-title"><span class="icon">💸</span> تفصيل المصروفات — خلال الفترة</div>
-      <div class="bar-row">
-        <div class="bar-label">مصاريف البرامج والأنشطة</div>
-        <div class="bar-track"><div class="bar-fill green" style="width:61%"></div></div>
-        <div class="bar-amount">5,633,931</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">مصاريف التشغيل المحملة</div>
-        <div class="bar-track"><div class="bar-fill gold" style="width:11%"></div></div>
-        <div class="bar-amount">965,644</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">مصاريف جمع الأموال</div>
-        <div class="bar-track"><div class="bar-fill gold" style="width:4%"></div></div>
-        <div class="bar-amount">373,192</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">المصاريف الإدارية العمومية</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:31%"></div></div>
-        <div class="bar-amount">2,868,836</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">صيانة مبنى الإحسان</div>
-        <div class="bar-track"><div class="bar-fill green" style="width:1.8%"></div></div>
-        <div class="bar-amount">163,579</div>
-      </div>
-      <div style="margin-top:16px;padding:12px 16px;background:#fdecea;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:700;">إجمالي المصروفات</span>
-        <span style="font-size:16px;font-weight:900;color:var(--red);direction:ltr;">9,185,909 ر.س</span>
-      </div>
+    <!-- SECTION 3: BENEFITS TABLE -->
+    <div class="section-header" style="margin-top:32px;">
+      <div class="section-num">٣</div>
+      <div class="section-title">مصفوفة التغطيات والمنافع — مقارنة الشرائح</div>
+      <div class="section-line"></div>
     </div>
 
-    <!-- NET ASSETS -->
-    <div class="card">
-      <div class="card-title"><span class="icon">🏛️</span> تفصيل صافي الأصول</div>
-      <table class="data-table">
+    <table class="coverage-table">
+      <thead>
+        <tr>
+          <th style="width:35%">المنفعة / الخدمة</th>
+          <th class="center gold">الشريحة أ<br><span style="font-size:9px;font-weight:400;color:rgba(255,255,255,0.6)">كبار السن 50+</span></th>
+          <th class="center gold">الشريحة ب<br><span style="font-size:9px;font-weight:400;color:rgba(255,255,255,0.6)">أمراض مزمنة 30–49</span></th>
+          <th class="center gold">الشريحة ج<br><span style="font-size:9px;font-weight:400;color:rgba(255,255,255,0.6)">أصحاء أقل من 50</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="4">الرعاية الأولية والطارئة</td></tr>
+        <tr>
+          <td class="benefit-name">زيارات الطوارئ والإسعاف</td>
+          <td class="center"><span class="check">✔ 100%</span></td>
+          <td class="center"><span class="check">✔ 100%</span></td>
+          <td class="center"><span class="check">✔ 100%</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">زيارات الطبيب العام</td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="check">✔ 12 زيارة/سنة</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">الاستشارات التخصصية</td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="partial">◑ 8 زيارات/سنة</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="4">الأمراض المزمنة وإدارتها</td></tr>
+        <tr>
+          <td class="benefit-name">برنامج إدارة الأمراض المزمنة DM</td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+          <td class="center"><span class="check">✔ إلزامي</span></td>
+          <td class="center"><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">أدوية السكري وضغط الدم</td>
+          <td class="center"><span class="check">✔ 100% بلا حد</span></td>
+          <td class="center"><span class="check">✔ 100% بلا حد</span></td>
+          <td class="center"><span class="cross">—</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">متابعة التخصص الدورية للمزمن</td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="cross">—</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="4">الأدوية والصيدليات</td></tr>
+        <tr>
+          <td class="benefit-name">الأدوية العامة (قائمة CCHI)</td>
+          <td class="center"><span class="check">✔ 90% بحد 6,000ر</span></td>
+          <td class="center"><span class="check">✔ 90% بحد 5,000ر</span></td>
+          <td class="center"><span class="check">✔ 80% بحد 3,000ر</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">الأدوية البيولوجية المتخصصة</td>
+          <td class="center"><span class="partial">◑ بموافقة مسبقة</span></td>
+          <td class="center"><span class="partial">◑ بموافقة مسبقة</span></td>
+          <td class="center"><span class="cross">—</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="4">التشخيص والمختبرات</td></tr>
+        <tr>
+          <td class="benefit-name">الأشعة (عادية، CT، MRI)</td>
+          <td class="center"><span class="check">✔ 100%</span></td>
+          <td class="center"><span class="check">✔ 100%</span></td>
+          <td class="center"><span class="check">✔ 100%</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">التحاليل المخبرية</td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="4">الوقاية والفحوصات الدورية</td></tr>
+        <tr>
+          <td class="benefit-name">الفحص الطبي السنوي الشامل</td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">برامج الكشف المبكر عن السرطان</td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+          <td class="center"><span class="partial">◑ جزئي</span></td>
+          <td class="center"><span class="partial">◑ جزئي</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">اللقاحات الوقائية الموصى بها</td>
+          <td class="center"><span class="check">✔ مشمولة</span></td>
+          <td class="center"><span class="check">✔ مشمولة</span></td>
+          <td class="center"><span class="check">✔ مشمولة</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="4">الحالات الكارثية والجراحات</td></tr>
+        <tr>
+          <td class="benefit-name">الجراحات الكبرى</td>
+          <td class="center"><span class="check">✔ حتى 500,000ر</span></td>
+          <td class="center"><span class="check">✔ حتى 500,000ر</span></td>
+          <td class="center"><span class="check">✔ حتى 500,000ر</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">وحدة العناية المركزة ICU</td>
+          <td class="center"><span class="check">✔ 100%</span></td>
+          <td class="center"><span class="check">✔ 100%</span></td>
+          <td class="center"><span class="check">✔ 100%</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">علاج الأورام / كيماوي</td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+          <td class="center"><span class="partial">◑ بموافقة مسبقة</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="4">خدمات إضافية</td></tr>
+        <tr>
+          <td class="benefit-name">العلاج الفيزيائي</td>
+          <td class="center"><span class="check">✔ 24 جلسة</span></td>
+          <td class="center"><span class="check">✔ 18 جلسة</span></td>
+          <td class="center"><span class="partial">◑ 10 جلسات</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">التطبيب عن بُعد (Telemedicine)</td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+          <td class="center"><span class="check">✔ غير محدود</span></td>
+        </tr>
+        <tr>
+          <td class="benefit-name">خدمة الترحيل الطبي الطارئ</td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+          <td class="center"><span class="check">✔ مشمول</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SECTION 4: PRICING SUMMARY -->
+    <div class="section-header">
+      <div class="section-num">٤</div>
+      <div class="section-title">ملخص التسعير الإجمالي — إجمالي الوثيقة الجماعية</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="pricing-summary">
+      <table>
         <thead>
           <tr>
-            <th>التصنيف</th>
-            <th style="text-align:left;direction:ltr;">المبلغ (ر.س)</th>
+            <th>الشريحة</th>
+            <th class="c">المستفيدون</th>
+            <th class="c">النسبة</th>
+            <th class="c">القسط/مستفيد/سنة (ر)</th>
+            <th class="c">الإجمالي السنوي (ر)</th>
+            <th class="c">التكلفة الحالية (ر)</th>
+            <th class="c">الوفر السنوي (ر)</th>
+            <th class="c">نسبة الوفر</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>صافي أصول غير مقيدة</td>
-            <td class="amount-cell" style="color:var(--green);">15,495,882</td>
+            <td class="bold">الشريحة أ — كبار السن 50+</td>
+            <td class="c">375</td>
+            <td class="c">25%</td>
+            <td class="c bold">3,720</td>
+            <td class="c bold">1,395,000</td>
+            <td class="c">2,388,000</td>
+            <td class="c teal-text">993,000</td>
+            <td class="c">41.6%</td>
           </tr>
           <tr>
-            <td>صافي أصول مقيدة — مشاريع</td>
-            <td class="amount-cell">5,674,782</td>
+            <td class="bold">الشريحة ب — أمراض مزمنة 30–49</td>
+            <td class="c">675</td>
+            <td class="c">45%</td>
+            <td class="c bold">2,940</td>
+            <td class="c bold">1,984,500</td>
+            <td class="c">3,582,225</td>
+            <td class="c teal-text">1,597,725</td>
+            <td class="c">44.6%</td>
           </tr>
           <tr>
-            <td>صافي أصول مقيدة — تشغيل</td>
-            <td class="amount-cell">4,244,141 <span style="color:var(--green);font-size:10px;">▲</span></td>
-          </tr>
-          <tr>
-            <td>صافي أصول الأوقاف</td>
-            <td class="amount-cell">1,183,661</td>
-          </tr>
-          <tr>
-            <td>صافي أصول (وقف / مقيد آخر)</td>
-            <td class="amount-cell">1,134,595</td>
-          </tr>
-          <tr style="background:var(--green-pale);">
-            <td style="font-weight:700;color:var(--green);">الإجمالي</td>
-            <td class="amount-cell" style="color:var(--green);font-size:15px;font-weight:900;">22,354,325</td>
+            <td class="bold">الشريحة ج — أصحاء أقل من 50</td>
+            <td class="c">450</td>
+            <td class="c">30%</td>
+            <td class="c bold">2,100</td>
+            <td class="c bold">945,000</td>
+            <td class="c">1,910,700</td>
+            <td class="c teal-text">965,700</td>
+            <td class="c">50.5%</td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td style="font-size:13px;">الإجمالي الكلي للوثيقة الجماعية</td>
+            <td class="c">1,500</td>
+            <td class="c">100%</td>
+            <td class="c teal" style="font-size:14px;">2,883 ر</td>
+            <td class="c teal">4,324,500 ر</td>
+            <td class="c" style="font-weight:500;">7,880,925 ر</td>
+            <td class="c teal" style="font-size:15px;">3,556,425 ر</td>
+            <td class="c teal">45.1%</td>
+          </tr>
+        </tfoot>
       </table>
-      <div style="margin-top:16px;padding:12px;background:#f0f9ff;border-radius:10px;border:1px solid #bee3f8;">
-        <div style="font-size:12px;color:#2b6cb0;font-weight:600;">نسبة الأصول المقيدة</div>
-        <div style="font-size:20px;font-weight:900;color:#2b6cb0;direction:ltr;">30.7%</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px;">من إجمالي صافي الأصول — مخصصة لمشاريع بعينها</div>
-      </div>
     </div>
-  </div>
 
-  <!-- PROJECTS TABLE -->
-  <div class="card" style="margin-bottom:36px;">
-    <div class="card-title"><span class="icon">🩺</span> أبرز المشاريع الخيرية — نشاط الفترة</div>
-    <table class="data-table">
+    <!-- ACTUARIAL ASSUMPTIONS TABLE -->
+    <div class="section-header">
+      <div class="section-num">٥</div>
+      <div class="section-title">الافتراضات الاكتوارية التفصيلية لكل شريحة</div>
+      <div class="section-line"></div>
+    </div>
+
+    <table class="assumptions-table">
       <thead>
         <tr>
-          <th>المشروع</th>
-          <th>مدين الفترة</th>
-          <th>دائن الفترة</th>
-          <th>الرصيد الختامي</th>
-          <th>الحالة</th>
+          <th>المتغير الاكتواري</th>
+          <th style="text-align:center">الشريحة أ (كبار السن)</th>
+          <th style="text-align:center">الشريحة ب (مزمنون)</th>
+          <th style="text-align:center">الشريحة ج (أصحاء)</th>
+          <th>المرجع / المصدر</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>مشروع العلاج الخيري</td>
-          <td class="amount-cell">4,499,372</td>
-          <td class="amount-cell">—</td>
-          <td class="amount-cell">إنفاق نشط</td>
-          <td><span class="badge green">نشط</span></td>
+          <td>معدل الخسائر المستهدف (Loss Ratio)</td>
+          <td class="atd-val a">78%</td>
+          <td class="atd-val b">73%</td>
+          <td class="atd-val c">62%</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">معايير CCHI 2025–2026</td>
         </tr>
         <tr>
-          <td>مشروع النقل الخيري</td>
-          <td class="amount-cell">1,134,595</td>
-          <td class="amount-cell">—</td>
-          <td class="amount-cell">1,134,595</td>
-          <td><span class="badge green">نشط</span></td>
+          <td>تحميل الخطر (Risk Loading)</td>
+          <td class="atd-val a">28%</td>
+          <td class="atd-val b">18%</td>
+          <td class="atd-val c">8%</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">نسبة السوق السعودي</td>
         </tr>
         <tr>
-          <td>مشروع الجهاز الطبي</td>
-          <td class="amount-cell">442,800</td>
-          <td class="amount-cell">86,955</td>
-          <td class="amount-cell">355,845</td>
-          <td><span class="badge gold">جاري</span></td>
+          <td>نسبة الاستخدام الطبي المتوقع</td>
+          <td class="atd-val a">88%</td>
+          <td class="atd-val b">72%</td>
+          <td class="atd-val c">38%</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">بيانات جمعية الإحسان 2024</td>
         </tr>
         <tr>
-          <td>مشروع الكشف المبكر لسرطان الثدي</td>
-          <td class="amount-cell">200,000</td>
-          <td class="amount-cell">—</td>
-          <td class="amount-cell">300,000</td>
-          <td><span class="badge green">نشط</span></td>
+          <td>متوسط عدد المطالبات / مستفيد / سنة</td>
+          <td class="atd-val a">12–15</td>
+          <td class="atd-val b">7–10</td>
+          <td class="atd-val c">2–4</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">تقديرات اكتوارية محلية</td>
         </tr>
         <tr>
-          <td>مشروع العيادات المتنقلة</td>
-          <td class="amount-cell">—</td>
-          <td class="amount-cell">—</td>
-          <td class="amount-cell">557,915</td>
-          <td><span class="badge gold">قائم</span></td>
+          <td>معدل التضخم الطبي المعتمد</td>
+          <td class="atd-val">8%</td>
+          <td class="atd-val">8%</td>
+          <td class="atd-val">8%</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">متوسط السوق السعودي 2022–25</td>
         </tr>
         <tr>
-          <td>مشروع الاستشاري الزائر</td>
-          <td class="amount-cell">—</td>
-          <td class="amount-cell">—</td>
-          <td class="amount-cell">144,206 <span style="color:var(--red);font-size:10px;">▼</span></td>
-          <td><span class="badge red">يحتاج تمويل</span></td>
+          <td>الانحراف المعياري للتكلفة</td>
+          <td class="atd-val a">±18%</td>
+          <td class="atd-val b">±14%</td>
+          <td class="atd-val c">±9%</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">تحليل الحساسية الاكتواري</td>
         </tr>
         <tr>
-          <td>منصة إحسان — مشروع العلاج</td>
-          <td class="amount-cell">2,503,264</td>
-          <td class="amount-cell">—</td>
-          <td class="amount-cell">3,049,686</td>
-          <td><span class="badge green">نشط</span></td>
+          <td>Credibility Factor (عامل المصداقية)</td>
+          <td class="atd-val">0.88</td>
+          <td class="atd-val">0.92</td>
+          <td class="atd-val">0.75</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">Bühlmann–Straub Method</td>
         </tr>
         <tr>
-          <td>وقف الإحسان 2</td>
-          <td class="amount-cell">160,515</td>
-          <td class="amount-cell">—</td>
-          <td class="amount-cell">1,183,661</td>
-          <td><span class="badge gold">وقف</span></td>
+          <td>نسبة احتمالية الحالات الكارثية</td>
+          <td class="atd-val a">6.8%</td>
+          <td class="atd-val b">3.2%</td>
+          <td class="atd-val c">0.9%</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">بيانات CCHI الوطنية</td>
+        </tr>
+        <tr>
+          <td>مصاريف الإدارة والتشغيل</td>
+          <td class="atd-val">8%</td>
+          <td class="atd-val">8%</td>
+          <td class="atd-val">8%</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">معيار السوق الموحد</td>
+        </tr>
+        <tr>
+          <td>هامش ربح شركة التأمين</td>
+          <td class="atd-val">3%</td>
+          <td class="atd-val">3%</td>
+          <td class="atd-val">3%</td>
+          <td style="font-size:10.5px;color:var(--slate-light)">وفق اشتراطات SAMA</td>
         </tr>
       </tbody>
     </table>
+
+    <!-- SECTION 6: TERMS & CONDITIONS -->
+    <div class="section-header">
+      <div class="section-num">٦</div>
+      <div class="section-title">شروط الوثيقة والاستثناءات الجوهرية</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="conditions-grid">
+      <div class="condition-card">
+        <div class="condition-title">شروط الإصدار والقبول</div>
+        <ul class="condition-list">
+          <li>إصدار وثيقة جماعية موحدة لجميع الشرائح الثلاث</li>
+          <li>الحد الأدنى للتغطية: 90% من إجمالي المستفيدين</li>
+          <li>فترة الانتظار للأمراض المزمنة: 30 يوماً من بدء التغطية</li>
+          <li>يُدرج المرضى بحالاتهم الحالية صراحةً في عقد التأمين</li>
+          <li>لا يُشترط فحص طبي مسبق للمستفيدين دون 50 سنة</li>
+          <li>التصنيف حسب الشريحة يبقى ثابتاً طوال مدة الوثيقة</li>
+        </ul>
+      </div>
+      <div class="condition-card">
+        <div class="condition-title">آلية تجديد الأسعار والتعديلات</div>
+        <ul class="condition-list">
+          <li>صلاحية العرض 30 يوماً من تاريخ الإصدار</li>
+          <li>تُربط زيادة سعر التجديد بنسبة الخسائر الفعلية المحققة</li>
+          <li>حد أقصى لزيادة التجديد السنوي: 20% بشرط المفاوضة</li>
+          <li>يُرسل تقرير الخسائر ربع السنوي لجمعية الإحسان تلقائياً</li>
+          <li>يُحتفظ بحق التفاوض مع شركات تأمين منافسة عند التجديد</li>
+          <li>إشعار التجديد قبل 90 يوماً من انتهاء الوثيقة</li>
+        </ul>
+      </div>
+      <div class="condition-card">
+        <div class="condition-title">الاستثناءات والتحفظات الرئيسية</div>
+        <ul class="condition-list">
+          <li>علاجات التجميل والتطاول غير المُبررة طبياً</li>
+          <li>الإخصاب المساعد وعلاجات العقم (قابل للإضافة بملحق)</li>
+          <li>نظارات الرؤية والعدسات اللاصقة الروتينية</li>
+          <li>الأطراف الصناعية الرياضية غير التعويضية</li>
+          <li>أضرار الإهمال المتعمد أو التشخيصات الكاذبة</li>
+          <li>العلاجات خارج المملكة إلا بإحالة طبية معتمدة</li>
+        </ul>
+      </div>
+      <div class="condition-card">
+        <div class="condition-title">الشبكة الطبية واشتراطات الجودة</div>
+        <ul class="condition-list">
+          <li>حصرياً من شبكة مستشفيات معتمدة من CCHI</li>
+          <li>لا تقل عن 15 مستشفى تخصصي في نطاق خدمة الجمعية</li>
+          <li>شرط وجود ثلاثة أطباء استشاريين على الأقل لكل تخصص رئيسي</li>
+          <li>تُراجع الشبكة الطبية سنوياً بحضور ممثل من الجمعية</li>
+          <li>مؤشرات جودة موثقة ربع سنوياً في تقرير CCHI</li>
+          <li>خط ساخن للمستفيدين على مدار الساعة طوال أيام الأسبوع</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- VALIDITY -->
+    <div class="validity-box">
+      <div class="validity-text">
+        <strong>فترة صلاحية عرض السعر</strong>
+        هذا العرض ملزم لمدة 30 يوماً كاملاً من تاريخ الإصدار. تنتهي صلاحيته في:
+      </div>
+      <div class="validity-date">16 يونيو 2026</div>
+    </div>
+
+    <!-- SECTION 7: RECOMMENDATIONS -->
+    <div class="section-header">
+      <div class="section-num">٧</div>
+      <div class="section-title">التوصيات الاكتوارية ومسار التفاوض المقترح</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="conditions-grid">
+      <div class="condition-card">
+        <div class="condition-title">أولوية التفاوض مع شركات التأمين</div>
+        <ul class="condition-list">
+          <li>التفاوض المتوازي مع 3–4 شركات مرخصة من CCHI في وقت واحد</li>
+          <li>إعطاء الشريحة ب (المزمنون) الأولوية القصوى في المفاوضة</li>
+          <li>اشتراط برنامج إدارة الأمراض المزمنة DM شرطاً غير قابل للتنازل</li>
+          <li>الحصول على عرضين على الأقل مكتوبين قبل القرار النهائي</li>
+        </ul>
+      </div>
+      <div class="condition-card">
+        <div class="condition-title">الهيكل المالي المُوصى به للوثيقة</div>
+        <ul class="condition-list">
+          <li>تخصيص 10% من الوفورات السنوية (≈355,000 ر) كصندوق احتياطي</li>
+          <li>دفع القسط ربع سنوياً لتحسين التدفق النقدي للجمعية</li>
+          <li>طلب خصم مجموعة لا يقل عن 5% مقابل دفع سنوي مقدم</li>
+          <li>ربط أي زيادة في التجديد بنسبة الخسائر الموثقة فعلياً</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
-  <!-- INDICATORS & OBSERVATIONS -->
-  <div class="section-title">الملاحظات والمؤشرات التحليلية</div>
-  <div class="three-col">
-    <div>
-      <div class="alert-box positive">
-        <div class="alert-icon">✅</div>
-        <div class="alert-text">
-          <strong>سيولة ممتازة</strong>
-          نسبة التداول 15.5x تعني أن الجمعية تملك أصولاً متداولة تفوق التزاماتها القصيرة بـ 15 مرة — وضع استثنائي جداً.
-        </div>
-      </div>
-      <div class="alert-box positive">
-        <div class="alert-icon">🏗️</div>
-        <div class="alert-text">
-          <strong>قاعدة أصول ثابتة راسخة</strong>
-          أصول ثابتة بـ 32.3 مليون ريال تشمل أراضي ومبانٍ وسيارات ومعدات طبية — تعكس استثماراً مؤسسياً حقيقياً.
-        </div>
-      </div>
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="footer-note">
+      <strong style="color:var(--navy);font-size:11px;">ملاحظة هامة:</strong> هذا العرض أُعدّ بناءً على تحليل اكتواري مستقل يستند إلى معطيات السوق السعودي ومعايير مجلس الضمان الصحي التعاوني CCHI. الأرقام الواردة تمثل تقديرات مهنية وليست عرضاً نهائياً ملزماً من شركة تأمين بعينها. يُنصح بالتفاوض مع شركات تأمين مرخصة والحصول على عروض أسعار رسمية ملزمة قبل اتخاذ القرار النهائي.
     </div>
-    <div>
-      <div class="alert-box warning">
-        <div class="alert-icon">⚠️</div>
-        <div class="alert-text">
-          <strong>توازن حرج في الإيرادات/المصروفات</strong>
-          الفرق بين المصروفات والإيرادات خلال الفترة ضئيل جداً (7,000 ر.س)، مما يستدعي مراقبة مستمرة لعدم الوقوع في عجز.
-        </div>
+    <div class="footer-stamp">
+      <div class="stamp-circle">
+        <div class="stamp-text">تحليل<br>اكتواري<br>مستقل</div>
       </div>
-      <div class="alert-box warning">
-        <div class="alert-icon">📋</div>
-        <div class="alert-text">
-          <strong>ذمم مدينة مرتفعة نسبياً</strong>
-          رصيد الذمم المدينة 515,381 ر.س — يستوجب متابعة تحصيلها خاصةً من المستأجرين في مركز الإحسان للأعمال.
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="alert-box positive">
-        <div class="alert-icon">💝</div>
-        <div class="alert-text">
-          <strong>تنويع مصادر التمويل</strong>
-          تبرعات من منصة إحسان، أوقاف، دعم حكومي، ومتبرعين أفراد — يعكس ثقة المجتمع وتنوع القاعدة التمويلية.
-        </div>
-      </div>
-      <div class="alert-box negative">
-        <div class="alert-icon">🔴</div>
-        <div class="alert-text">
-          <strong>إهلاك متراكم ضخم</strong>
-          14.5 مليون ريال إهلاك متراكم — يشير إلى قدم بعض الأصول وضرورة التخطيط لتجديدها مستقبلاً.
-        </div>
-      </div>
+      <div class="footer-company">أركان الاستدامة للاستثمار<br>وحدة تطوير الأعمال الصحية | 2026</div>
     </div>
   </div>
 
-  <!-- SUMMARY TABLE -->
-  <div class="card" style="margin-bottom:36px;">
-    <div class="card-title"><span class="icon">📋</span> ملخص القوائم المالية الرئيسية</div>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>البند</th>
-          <th>الرصيد السابق</th>
-          <th>حركة الفترة (مدين)</th>
-          <th>حركة الفترة (دائن)</th>
-          <th>الرصيد الختامي</th>
-          <th>التغيّر</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="font-weight:700;">إجمالي الأصول</td>
-          <td class="amount-cell">39,347,569</td>
-          <td class="amount-cell">11,232,542</td>
-          <td class="amount-cell">12,240,303</td>
-          <td class="amount-cell" style="color:var(--green);font-weight:700;">38,339,808</td>
-          <td><span class="badge red">▼ 1,007,761</span></td>
-        </tr>
-        <tr>
-          <td style="font-weight:700;">الأصول المتداولة</td>
-          <td class="amount-cell">6,926,667</td>
-          <td class="amount-cell">11,208,839</td>
-          <td class="amount-cell">12,223,103</td>
-          <td class="amount-cell" style="color:var(--green);">5,912,403</td>
-          <td><span class="badge red">▼ 1,014,264</span></td>
-        </tr>
-        <tr>
-          <td style="font-weight:700;">النقدية والبنوك</td>
-          <td class="amount-cell">5,700,005</td>
-          <td class="amount-cell">9,888,232</td>
-          <td class="amount-cell">10,471,840</td>
-          <td class="amount-cell" style="color:var(--green);">5,116,397</td>
-          <td><span class="badge red">▼ 583,608</span></td>
-        </tr>
-        <tr>
-          <td style="font-weight:700;">الالتزامات المتداولة</td>
-          <td class="amount-cell">1,146,428</td>
-          <td class="amount-cell">884,433</td>
-          <td class="amount-cell">120,365</td>
-          <td class="amount-cell" style="color:var(--red);">382,360</td>
-          <td><span class="badge green">▼ انخفضت</span></td>
-        </tr>
-        <tr>
-          <td style="font-weight:700;">صافي الأصول</td>
-          <td class="amount-cell">19,897,270</td>
-          <td class="amount-cell">20,824,058</td>
-          <td class="amount-cell">23,281,112</td>
-          <td class="amount-cell" style="color:var(--green);font-weight:700;">22,354,325</td>
-          <td><span class="badge green">▲ 2,457,054</span></td>
-        </tr>
-        <tr>
-          <td style="font-weight:700;">مخصص نهاية الخدمة</td>
-          <td class="amount-cell">1,005,359</td>
-          <td class="amount-cell">138,687</td>
-          <td class="amount-cell">216,475</td>
-          <td class="amount-cell">1,083,147</td>
-          <td><span class="badge red">▲ 77,788</span></td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    هذا العرض صادر لأغراض التخطيط الاستراتيجي حصراً · الأقساط المذكورة مبنية على تحليل السوق السعودي وليست عروضاً ملزمة من شركات تأمين · يجب الرجوع لشركات تأمين مرخصة من CCHI للحصول على أسعار نهائية رسمية
   </div>
 
 </div>
-
-<div class="footer">
-  تم إعداد هذا التقرير بناءً على بيانات ميزان المراجعة الرسمي لجمعية الإحسان — الفترة المالية أكتوبر – ديسمبر 2024<br>
-  جميع المبالغ بالريال السعودي (ر.س) • تاريخ الإعداد: أغسطس 2025
-</div>
-
 </body>
 </html>
